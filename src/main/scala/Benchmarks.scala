@@ -26,7 +26,7 @@ object Bench {
                .jvmArgsPrepend(s"-Xbootclasspath/a:$libs")
                .mode(Mode.AverageTime)
                .timeUnit(TimeUnit.MILLISECONDS)
-               .forks(1)
+               .forks(2)
                .warmupIterations(10)
                .measurementIterations(20)
                .build
