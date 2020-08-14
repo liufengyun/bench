@@ -1,7 +1,7 @@
 var Bench = Bench || {};
 
 function process(item) {
-  return { y: item[3], x: new Date(item[1].replace("CET", "+0100").replace("CEST", "+0200")), obj: item };
+  return { y: item[3], x: new Date(item[1]), obj: item };
 }
 
 function sort(points) {
@@ -257,8 +257,13 @@ window.showCommit = function () {
     var options = defaultOptions();
     options.xaxis.tickmode = "auto";
     options.xaxis.customTickFn = function(i) {
-      var date = data[0].objects[i].x;
-      return date.toISOString().substring(0, 10);
+      if (i < data[0].objects.length) {
+        var date = data[0].objects[i].x;
+        return date.toISOString().substring(0, 10);
+      }
+      else {
+        return "";
+      }
     };
     // options.xaxis.dtick = 30 * 24 * 60 * 60 * 1000;
     return options;
